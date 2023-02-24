@@ -5,5 +5,29 @@
 <h1>Produtos</h1>
 <p>Listagem de Produtos</p>
 
+<p>Última Atualização: {{ "now"|date('d/m/Y H:i:s','America/Sao_Paulo') }}</p>
+
+<table border="1">
+<tr>
+    <th>Produtos</th>
+    <th>Preço</th>
+</tr>
+
+{% for prod in produtos %}
+<!-- Linha para repetir -->
+<tr>
+    <td>{{ prod.nome }}</td>
+    <td> R$ {{ prod.preco|number_format(2, ',', '.') }}</td>
+
+</tr>
+<!-- Linha para repetir -->
+{% else %}
+<tr>
+    <td> colspan="2">Nenhum Produto</td>
+</tr>
+{% endfor %}
+
+</table>
+
 
 {% include "inc/foot.html" %}
